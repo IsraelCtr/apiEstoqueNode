@@ -26,10 +26,10 @@ app.get('/', (req, res) => {
     res.status(200).send('curso de Node.js');
 })
 
-app.get('/produtos',async (req, res) => {
-    const listaProdutos = await produto.find({}); // Busca todos os produtos no banco de dados
-    res.status(200).json(listaProdutos);
-})
+//app.get('/produtos',async (req, res) => {
+ //   const listaProdutos = await produto.find({}); // Busca todos os produtos no banco de dados
+//    res.status(200).json(listaProdutos);
+//}) transferido para controller
 app.post("/produtos",(req, res)=>{
     produtos.push(req.body); // Adiciona o novo livro ao array de livros
     res.status(201).json(produtos); // Retorna o array atualizado de livros
