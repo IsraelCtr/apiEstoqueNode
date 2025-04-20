@@ -1,7 +1,6 @@
 import express from 'express';
 import conectiondatabase from './config/dbconect.js';
-import produto from './models/produto.js'; // Importando o modelo de produto
-
+import Routes from './routes/index.js'; // Importando as rotas
 
 const conection = await conectiondatabase(); // Conectando ao banco de dados MongoDB
 
@@ -16,22 +15,12 @@ conection.once("open", () => {
 );
 
 const app = express();
-app.use(express.json()); // Middleware para analisar o corpo das requisições como JSON
+
+Routes(app);
 
 
-
-
-
-app.get('/', (req, res) => {
-    res.status(200).send('curso de Node.js');
-})
-
-//app.get('/produtos',async (req, res) => {
- //   const listaProdutos = await produto.find({}); // Busca todos os produtos no banco de dados
-//    res.status(200).json(listaProdutos);
-//}) transferido para controller
 app.post("/produtos",(req, res)=>{
-    produtos.push(req.body); // Adiciona o novo livro ao array de livros
+
     res.status(201).json(produtos); // Retorna o array atualizado de livros
 })
 app.get('/produtos/:id', (req, res) => {
@@ -50,5 +39,4 @@ const produto= buscarProdutoPorId(req.params.id);
 });
 
 
-export default app; // Exportando o app para ser utilizado em outros arquivos
-//mongodb+srv://israelCastro:Naoseiasenha.123@cluster0.prvuicn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0 --conection mongoDB
+export default app; 

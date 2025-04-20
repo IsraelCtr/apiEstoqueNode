@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import { ferramentaEletricaSchema } from './FerramentaEletrica.js';
+
 
 const produtoSchema = new mongoose.Schema({
 
@@ -20,8 +22,9 @@ const produtoSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    ferramentaEletrica: ferramentaEletricaSchema
 },
     {versionKey: false,});
 
-const produto = mongoose.model('produtos', produtoSchema);
-export default produto;
+const produtos = mongoose.model('produto', produtoSchema);
+export default produtos;
