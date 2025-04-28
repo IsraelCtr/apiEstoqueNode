@@ -4,6 +4,7 @@ import express from 'express';
 const routes = express.Router(); // Criando uma instância do roteador do Express//
 
  routes.get("/produtos", ProdutoController.listarProdutos); // Rota para listar produtos
+ routes.get("/produtos/busca", ProdutoController.listarProdutoPorNome); // Rota para cadastrar um novo produto
  routes.post("/produtos", ProdutoController.postarProduto); // Rota para cadastrar um novo produto
  routes.put("/produtos/:id", ProdutoController.atualizarProdutos); // Rota para atualizar um produto
  routes.get("/produtos/:id", ProdutoController.listarProdutoPorId); // Rota para listar um produto por ID

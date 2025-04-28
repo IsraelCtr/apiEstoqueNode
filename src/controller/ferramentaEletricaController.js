@@ -1,12 +1,12 @@
 import {ferramentaEletrica} from '../models/FerramentaEletrica.js';
 
 class FerramentaEletricaController {
-    static async listarFerramentas(req, res) {
+    static  listarFerramentas= async(req, res) =>{
         const listaFerramentas = await ferramentaEletrica.find({}); // Busca todos os produtos no banco de dados
         res.status(200).json(listaFerramentas); // Retorna a lista de produtos
     };
 
-    static async listarFerramentaPorId(req, res) {
+    static  listarFerramentaPorId= async(req, res) =>{
         const { id } = req.params; // Obtém o ID do produto a ser buscado
         try {
             const ferramenta = await ferramentaEletrica.findById(id); // Busca o produto pelo ID
@@ -15,14 +15,14 @@ class FerramentaEletricaController {
             res.status(500).json({ message: `${error.message} - falha ao buscar produto` }); // Retorna um erro caso ocorra
         }
     }
- static async postarFerramenta(req, res) {
+ static  postarFerramenta = async(req, res) =>{
         try {const novaFerramenta = await ferramentaEletrica.create(req.body); // Cria um novo produto com os dados do corpo da requisiçãoq
             res.status(201).json({message: "criado com sucesso",ferramentaeletrica:novaFerramenta}); // Retorna o produto criado
         }catch (error) {
             res.status(500).json({ message: `${error.message} - falha ao cadastrar produto` }); // Retorna um erro caso ocorra
         }       
     }
-    static async deletarFerramenta(req, res) {
+    static  deletarFerramenta= async (req, res) =>{
         const {id}  = req.params; // Obtém o ID do produto a ser deletado
         try {
             await ferramentaEletrica.findByIdAndDelete(id); // Deleta o produto do banco de dados
