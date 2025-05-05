@@ -11,6 +11,11 @@ const ferramentaEletricaSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    volts :{
+        type: Number,
+        enum: [110, 220, 380],
+        required: [true, "A voltagem é obtigatoria"], 
+    }
 },
     {versionKey: false,});
 
