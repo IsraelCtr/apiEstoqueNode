@@ -8,19 +8,19 @@ const produtoSchema = new mongoose.Schema({
 
     nome: {
         type: String,
-        required: true,
+        required: [true, "O nome do produto é obrigatório"],
     },
     marca: {
         type: String,
-        required: true,
+        required: [true, "A marca é obrigatória"],
     },
     preco: {
         type: Number,
-        required: true,
+        required: [true, "O preço é obrigatório"],
     },
     quantidade: {
         type: Number,
-        required: true,
+        required: [true, "A quantidade é obrigatória"],
     },
     ferramentaEletrica: ferramentaEletricaSchema
 },
