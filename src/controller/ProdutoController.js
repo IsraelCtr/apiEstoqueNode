@@ -4,6 +4,7 @@ class ProdutoController {
 
   static async listarProdutos(req, res, next) {
     try{
+      
       const listaProdutos = await produtos.find({});
     res.status(200).json(listaProdutos);
   }
@@ -57,10 +58,11 @@ class ProdutoController {
     }
   }
   static async listarProdutoPorNome(req, res, next) {
-    const  nome  = req.query.nome;
+    const  {nome}  = req.query;
     try {
-      const produto = await produtos.find({ nome: nome });
-      res.status(200).json(produto);
+      const regex = new RegExp(nome, 'i');
+      const produtoEncontrado = await produtos.find({nome:regex});
+      res.status(200).json(produtoEncontrado);
     } catch (error) {
       next(error);
       //res.status(500).json({ message: `${error.message} - falha ao buscar produto` });

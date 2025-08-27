@@ -3,6 +3,7 @@ import conectiondatabase from './config/dbconect.js';
 import Routes from './routes/index.js'; // Importando as rotas
 
 import ManipuladorDeErros from './middleware/manipuladoDeErros.js';
+import manipulador404 from './middleware/manipulador404.js';
 
 const conection = await conectiondatabase(); // Conectando ao banco de dados MongoDB
 
@@ -19,8 +20,9 @@ conection.once("open", () => {
 const app = express();
 
 Routes(app);
-
+app.use(manipulador404)
 app.use(ManipuladorDeErros)
+
 
 
 export default app; 
